@@ -4,6 +4,11 @@ import {useState, useEffect} from 'react';
 import CCContainer from './containers/CCContainer';
 import NavBar from './components/NavBar';
 import ErrorPage from './components/ErrorPage';
+import Kings from './components/changes/Kings';
+import Queens from './components/changes/Queens';
+import Tittums from './components/changes/Tittums';
+import Whittingtons from './components/changes/Whittingtons';
+import BackRounds from './components/changes/BackRounds'
 
 function App() {
 
@@ -11,7 +16,7 @@ function App() {
   
   useEffect(() => {
     getChanges();
-  }, [changes]);
+  }, []);
 
   const getChanges = () => {
     fetch("http://127.0.0.1:5000/api/changes")
@@ -29,6 +34,11 @@ function App() {
       exact path="/" 
       render={() => <CCContainer changes={changes} />} 
       />
+      <Route path="/Kings" component={Kings} />
+      <Route path="/Queens" component={Queens} />
+      <Route path="/Tittums" component={Tittums} />
+      <Route path="/Whittingtons" component={Whittingtons} />
+      <Route path="/BackRounds" component={BackRounds} />
       <Route component={ErrorPage} />
       </Switch>
       </>
