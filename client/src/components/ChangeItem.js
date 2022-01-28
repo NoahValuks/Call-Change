@@ -4,10 +4,6 @@ const ChangeItem = ({name}) => {
     
     const url = `/${name}`
 
-    console.log(url);
-    
-    // console.log(link());
-
     return(
         <>
             <Link to={url} >{name}</Link>
