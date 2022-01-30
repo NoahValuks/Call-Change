@@ -9,6 +9,7 @@ import Queens from './components/changes/Queens';
 import Tittums from './components/changes/Tittums';
 import Whittingtons from './components/changes/Whittingtons';
 import BackRounds from './components/changes/BackRounds'
+import TryToChange from './components/TryToChange/TryToChange';
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
       exact path="/" 
       render={() => <CCContainer changes={changes} />} 
       />
+      <Route path="/try-to-change" component={TryToChange} />
       <Route path="/Kings" component={Kings} />
       <Route path="/Queens" component={Queens} />
       <Route path="/Tittums" component={Tittums} />
