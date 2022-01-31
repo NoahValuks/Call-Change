@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BellList from "./BellList";
 import BellItem from "./BellItem";
 
@@ -8,30 +8,49 @@ const TryToChange = () => {
     const [number, setNumber] = useState(0)
     const [bells, setBells] = useState([])
 
-
-    const handleOnClick6 = () => {
-        setNumber(6)
+    useEffect(() => {
         addBells(number)
+    }, [number])
+
+    useEffect(() => {
+        setNumber()
+    },[])
+
+    useEffect(() => {
+        order()
+    }, [bells])
+
+    const handleOnClick6 = (event) => {
+        event.preventDefault()
+        setNumber(6)
     };
 
-    const handleOnClick8 = () => {
+    const handleOnClick8 = (event) => {
+        event.preventDefault()
         setNumber(8)
-        addBells(number)
     };
     
     
     const addBells = (number) => {
         let num = 0
         let newBells = []
-        while(num !== number){
+        while(num < number){
             const newNum = num+1
+            num = newNum
             const newBell = BellItem(newNum)
             newBells = [...newBells, newBell]
         }
         setBells(newBells)
     };
-    
 
+    const order = () => {
+        let newOrder = []
+        let temp = bells
+        temp.forEach(bell => newOrder = [...newOrder, bell.number.number])
+        setBellOrder(newOrder)
+    }
+    
+    console.log(bells);
 
     return(
         <>
