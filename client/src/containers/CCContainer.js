@@ -3,11 +3,10 @@ import ChangeItem from "../components/ChangeItem";
 import './CCContainer.css'
 
 const CCContainer = ({changes}) => {
-
+    
     const listOfChanges = changes.map((change, index) => {
         return <ChangeItem name={change.name} />
       });
-    
 
     return( 
         <>

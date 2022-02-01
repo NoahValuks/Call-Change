@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import BellList from "./BellList";
 import BellItem from "./BellItem";
 
-const TryToChange = () => {
+const TryToChange = ({changes}) => {
     
     const [bellOrder, setBellOrder] = useState([])
     const [number, setNumber] = useState(0)
     const [bells, setBells] = useState([])
+    const [change, setChange] = useState([])
 
     useEffect(() => {
         addBells(number)
@@ -20,6 +21,17 @@ const TryToChange = () => {
         order()
     }, [bells])
 
+    useEffect(() => {
+        setChange()
+    },[])
+
+    const listOfChanges = changes.map((change, index) => {
+        const name = change.name
+        const changeOn6 = change.on_six
+        const changeOn8 = change.on_eight
+        return {name: {name}, changeOn6: {changeOn6}, changeon8: {changeOn8}}
+      });
+
     const handleOnClick6 = (event) => {
         event.preventDefault()
         setNumber(6)
@@ -29,7 +41,7 @@ const TryToChange = () => {
         event.preventDefault()
         setNumber(8)
     };
-    
+
     
     const addBells = (number) => {
         let num = 0
@@ -49,8 +61,9 @@ const TryToChange = () => {
         temp.forEach(bell => newOrder = [...newOrder, bell.number.number])
         setBellOrder(newOrder)
     }
-    
-    console.log(bells);
+
+
+
 
     return(
         <>

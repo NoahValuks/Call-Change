@@ -10,6 +10,7 @@ import Tittums from './components/changes/Tittums';
 import Whittingtons from './components/changes/Whittingtons';
 import BackRounds from './components/changes/BackRounds'
 import TryToChange from './components/TryToChange/TryToChange';
+import ChangeItem from './components/ChangeItem';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
       .then(data => setChanges(data));
   };
 
+
   return (
     <>
     <Router>
@@ -32,8 +34,8 @@ function App() {
       <NavBar />
       <Switch>
       <Route 
-      exact path="/" 
-      render={() => <CCContainer changes={changes} />} 
+        exact path="/" 
+        render={() => <CCContainer changes={changes} />} 
       />
       <Route path="/try-to-change" component={TryToChange} />
       <Route path="/Kings" component={Kings} />
