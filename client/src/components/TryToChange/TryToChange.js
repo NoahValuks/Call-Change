@@ -68,26 +68,14 @@ const TryToChange = ({changes}) => {
         const bell1 = event.target.first.value
         const bell2 = event.target.second.value
         const index1 = temp.indexOf(Number(bell1))
-        console.log("Before index1:", index1);
         const index2 = temp.indexOf(Number(bell2))
-        console.log("Before index2:", index2);
-        console.log("Before:", temp);
         if(index1 === (index2 + 2)){
             const tempNumber = Number(index2 + 1)
-            const index3 = temp[tempNumber]
-            const bell3 = temp[index3]
-            console.log("tempNumber", tempNumber);
-            console.log("after index3:", index3);
-            console.log("after index1:", index1);
             const data = temp[index1];
-            const data1 = temp[index3];
+            const data1 = temp[tempNumber];
             temp[index1] = data1;
-            temp[index3] = data;
-            console.log("data1", data1);
-            console.log("data:", data);
-            console.log("after:", temp);
+            temp[tempNumber] = data;
             setBellOrder(temp);
-            console.log("after:", bellOrder);
         }
 
     }
