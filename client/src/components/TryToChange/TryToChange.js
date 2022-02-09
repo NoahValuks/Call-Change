@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import React from "react";
 import BellList from "./BellList";
 import BellItem from "./BellItem";
 
@@ -9,28 +10,18 @@ const TryToChange = ({changes}) => {
     const [bells, setBells] = useState([])
     const [change, setChange] = useState([])
 
+
     useEffect(() => {
         addBells(number)
     }, [number])
 
-    useEffect(() => {
-        setNumber()
-    },[])
 
     useEffect(() => {
         order()
     }, [bells])
 
-    useEffect(() => {
-        setChange()
-    },[])
 
-    // const listOfChanges = changes.map((change, index) => {
-    //     const name = change.name
-    //     const changeOn6 = change.on_six
-    //     const changeOn8 = change.on_eight
-    //     return {name: {name}, changeOn6: {changeOn6}, changeon8: {changeOn8}}
-    //   });
+
 
     const handleOnClick6 = (event) => {
         event.preventDefault()
@@ -42,7 +33,6 @@ const TryToChange = ({changes}) => {
         setNumber(8)
     };
 
-    
     const addBells = (number) => {
         let num = 0
         let newBells = []
@@ -60,11 +50,11 @@ const TryToChange = ({changes}) => {
         let temp = bells
         temp.forEach(bell => newOrder = [...newOrder, bell.number.number])
         setBellOrder(newOrder)
-    }
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        let temp = bellOrder
+        let temp = [...bellOrder]
         const bell1 = event.target.first.value
         const bell2 = event.target.second.value
         const index1 = temp.indexOf(Number(bell1))
@@ -76,10 +66,9 @@ const TryToChange = ({changes}) => {
             temp[index1] = data1;
             temp[tempNumber] = data;
             setBellOrder(temp);
+            console.log(temp);
         }
-
-    }
-
+    };
 
 
     return(
@@ -95,6 +84,8 @@ const TryToChange = ({changes}) => {
                 </label>
                 <input type="submit" value="Submit" />
             </form>
+            {bellOrder}
+            {bells.number}
         </>
     )
 };
